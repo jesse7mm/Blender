@@ -1,0 +1,7 @@
+#remove vertex groups from selected object
+import bpy
+selection = bpy.context.selected_objects
+for ob in selection:
+    if ob.type == 'MESH':
+        for x in ob.vertex_groups:
+            ob.vertex_groups.remove(x)
