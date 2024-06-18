@@ -1,0 +1,18 @@
+#remove pesky shape keys from selected object
+import bpy
+
+# Get the selected object
+obj = bpy.context.object
+
+# Check if the object has shape keys
+if obj.data.shape_keys:
+    # Get all shape keys
+    shape_keys = obj.data.shape_keys.key_blocks
+
+    # Iterate over each shape key and remove it
+    for shape_key in shape_keys:
+        obj.shape_key_remove(shape_key)
+
+    print(f"All shape keys removed from {obj.name}.")
+else:
+    print(f"No shape keys found on {obj.name}.")
